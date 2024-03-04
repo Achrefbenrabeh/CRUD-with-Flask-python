@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+ {% block content %}
+
+ <body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Welcome to the Student Management System</h1>
+                <p class="card-text">
+                    Our Student Management System is a comprehensive platform designed to streamline the management of student data and administrative tasks for educational institutions.
+                </p>
+                <p class="card-text">
+                    With our system, administrators can effortlessly manage student records, courses, classes, attendance, grades, assignments, and more. Teachers can efficiently record and track student performance, communicate with students and parents, and streamline their classroom activities.
+                </p>
+                <p class="card-text">
+                    Our user-friendly interface and powerful features make it easy for educational institutions to centralize their student information, automate administrative processes, and improve communication and collaboration among staff, students, and parents.
+                </p>
+                <p class="card-text">
+                    Whether you're a school, college, or university, our Student Management System is customizable to suit your institution's specific needs and scalable to grow with your organization. Join us in revolutionizing the way we manage student information and enhance the educational experience for all stakeholders.
+                </p>
+                {% if current_user.is_authenticated %}
+                <div class="alert alert-success" role="alert">
+                    <p class="mb-0">Welcome, <strong>{{ current_user.username }}</strong> !</p>
+                </div>
+                {% else %}
+                <div class="text-center">
+                    <a href="{{url_for('register')}}" class="btn btn-primary me-2">Register</a>
+                    <a href="{{url_for('login')}}" class="btn btn-secondary">Login</a>
+                </div>
+                {% endif %}
+               
+            </div>
+        </div>
+    </div>
+</body>         
+
+
+ {% endblock %}

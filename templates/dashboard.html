@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<body>
+
+<div class="container mt-5">
+    <h2>Students management</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Date Of Birth</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student['full_name'] }}</td>
+                <td>{{ student['email'] }}</td>
+                <td>{{ student['date_of_birth'] }}</td>
+                <td>{{ student['adresse'] }}</td>
+                <td>
+                    <a href=" {{ url_for('edit', id=student.id) }}"><button class="btn btn-primary btn-sm">Edit</button></a>
+                    <a href="{{ url_for('delete', id=student.id) }}"><button class="btn btn-danger btn-sm">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+            <!-- More rows with data -->
+        </tbody>
+    </table>
+   <a href="{{url_for('create')}}"> <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add User</button>
+   </div></a>
+
+
+<!-- Bootstrap JS and jQuery (needed for modal functionality) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+
+{% endblock content %}
